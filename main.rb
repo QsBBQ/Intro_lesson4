@@ -110,10 +110,10 @@ end
 post '/bet' do
   if params[:bet_amount].nil? || params[:bet_amount].to_i == 0
     @error = "Must make a bet."
-    halt erb(:erb)
+    halt erb(:bet)
   elsif params[:bet_amount].to_i > session[:player_pot]
     @error = "Bet amount cannot be greater than what we have (#{session[:player_pot]})"
-    halt erb(:erb)
+    halt erb(:bet)
   else
     session[:player_bet] = params[:bet_amount].to_i
     redirect '/game'
